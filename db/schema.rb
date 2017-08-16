@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815023525) do
+ActiveRecord::Schema.define(version: 20170816070145) do
 
   create_table "hellos", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170815023525) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
