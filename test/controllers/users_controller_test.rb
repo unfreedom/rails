@@ -39,14 +39,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "email addresses should be unique" do
-      duplicate_user = @user.save
+      duplicate_user = @user.dup
+      duplicate_user.email = @user.email.upcase
+      @user.save
       assert_not duplicate_user.valid?
   end
 
   test "email addresses should be saved as lower-case" do
         mixed_case_email = "Foo@ExAMPle.com"
         @user.email = mixed_case_email
-        @user.saved
+        @user.save
         assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
