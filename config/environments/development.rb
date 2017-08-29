@@ -30,7 +30,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :test
-  host = 'example.com'
+  host = '192.168.1.236:3000'
   config.action_mailer.default_url_options = {host: host, protocpl: 'https'}
 
   # Print deprecation notices to the Rails logger.

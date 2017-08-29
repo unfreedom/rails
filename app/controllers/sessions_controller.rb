@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-      user = User.find_by(email: params[:session][:email].downcase
+      user = User.find_by(email: params[:session][:email].downcase)
       if user && user.authenticate(params[:session][:password])
           if user.activated?
               log_in user
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
               redirect_back_or user
           else
               message = "Account not activated."
-              massage += "Check your email for activation link."
+              message += "Check your email for activation link."
               flash[:warning] = message
               redirect_to root_url
           end
